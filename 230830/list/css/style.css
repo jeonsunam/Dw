@@ -1,0 +1,16 @@
+span {
+	font-size : 20px;
+}
+ul {
+	background-color : aliceblue;
+}
+/* ul > li는 자기 자식만 적용(ul 안에 li만 적용) */
+ul > li{
+	background-color : green;
+}
+ul ul{
+	background-color : blue;
+}
+ul ul li {
+	background-color : orange;
+}

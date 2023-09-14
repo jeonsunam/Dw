@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: nowrap;
+    background-color: aqua;
+    height: 100vh;
+    align-items: flex-start;
+    /* flex 주축(X축)의 방향은 기본 값이 row */
+    flex-direction: row;
+    /* row-reverse는 주축의 진행방향을 역순으로 변경 */
+    flex-direction: row-reverse;
+    /* column은 주축의 진행방향을 교차축 방향으로 바꾼다
+    가로로 진행하던걸, 세로로 진행한다. */
+    flex-direction: column;
+    /* column-reverse는 주축의 진행방향을 역순으로 변경 */
+    flex-direction: column-reverse;
+    
+    align-items: center;
+}
+
+.box{
+    background-color: rgb(235, 11, 11);
+    transform: rotate(0deg);
+    transition: transform 2s ease;
+    transform-origin: right bottom;
+    flex-grow: 1;
+    flex-basis: calc(100% / 3);
+}
+
+.box:nth-child(2) {
+    background-color: green;
+}
+
+.box:nth-child(3) {
+    background-color: blue;
+}
+
+.box:nth-child(4) {
+    background-color: yellow;
+}
+
+.box:nth-child(5) {
+    background-color: purple;
+}
+
+.box:last-child {
+    background-color: orange;
+}
+
+.box:active{
+    transform: rotate(10800deg) translateY(60%);
+}

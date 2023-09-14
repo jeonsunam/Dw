@@ -1,0 +1,57 @@
+/* nth-child(?) ? = 1,2,3번째 자식 */
+/*ul li:nth-child(5),
+ul li:nth-child(6) {
+	background-color : blue;
+	color : yellow;
+}*/
+/* 
+홀수 사용할 때는 odd 
+짝수 사용할 때는 even
+*/
+
+ul li {
+	color:yellow;
+}
+
+ul li:nth-child(odd) {
+	background-color : red;
+}
+
+ul li:nth-child(even) {
+	background-color : blue;
+}
+ol li {
+	background-color : yellow;
+	color:red;
+}
+
+ol li:first-child {
+	color : black;
+}
+/* last-child 내용이 추가가 되어도 맨마지막것만 실행되는 문구 */
+ol li:last-child {
+	background-color : green;
+}
+
+/* border 속성 solid, dashed, dotted / radius 모서리 둥글게 / overflow:hidden 부모에게 설정, 자식이 넘치는것을 숨겨라*/
+ul {
+	border : 1px solid black;
+	border-radius : 10px; 
+	overflow : hidden;
+}
+
+ol {
+	border-top : 1px solid red;
+	border-left : 1px solid blue;
+	border-right : 1px solid yellow;
+	border-bottom : 1px solid purple;
+	/* border: 1px solid black;*/
+	/* 
+	border-top-left-radius : 20px;
+	border-top-right-radius : 20px;
+	border-bottom-left-radius : 20px;
+	border-bottom-right-radius : 20px; 
+	위에 4개를 축약한 것이 아래*/
+	border-radius : 10px;
+	overflow : hidden;
+}

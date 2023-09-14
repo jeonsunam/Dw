@@ -1,0 +1,17 @@
+.text-color {
+	color : yellow;
+	font-size : 18px;
+	font-weight : 600;
+}
+
+.main {
+	color : red;
+	font-weight : 500;
+}
+
+.first {
+	color : blue;
+}
+.main {
+	font-size : 30;
+}

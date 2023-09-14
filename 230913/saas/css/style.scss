@@ -1,0 +1,12 @@
+$bg: blue;
+// import 순서 중요
+// bem block 블록
+//      element 요소
+//      modifier 수정자
+@import "card.scss";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

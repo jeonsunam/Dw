@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    /* 가운데 정렬을 해야하는데 부모를 만들기 귀찬을때 사용? */
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+}
+
+.brand {
+    font-family: 'Pacifico', cursive;
+}
+
+.menu-list {
+    display: flex;
+    list-style: none; 
+    gap: 3rem;   
+}
+
+.icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}

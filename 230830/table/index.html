@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+	<link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+	<table>
+		<!-- table에 thead, tbody, tfoot이있다. / th는 thead에 사용 글자색 진하게 -->
+		<thead>
+			<tr>
+				<th>품명</th>
+				<th>가격</th>
+				<th>주문수량</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>아메리카노</td>
+				<td>2000</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>카페라떼</td>
+				<td>3000</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>에스프레소</td>
+				<td>2500</td>	
+				<td>4</td>	
+			</tr>
+			<tr>
+				<td>수박쥬스</td>
+				<td>5000</td>
+				<td rowspan = "2">5</td>
+			</tr>
+			<tr>
+				<td>미숫가루</td>
+				<td>6000</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>총 가격</td>
+				<td colspan = "2">100,000원</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

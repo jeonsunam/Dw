@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- autocomplete 자동저장기능 끄기 off -->
+    <!-- alt + shift + f 키는 자동 줄정렬 -->
+    <form autocomplete="off">
+        <div>
+            <!-- label과 input은 같이 / for는 클릭했을 시 같은 id를 찾아가서 진하게 보여준다 / placeholder 빈칸에 문구 표시 / name = 제출하는 값을 주소에 띄우기?-->
+            <label for="username">사용자이름</label>
+            <input id="username" type="text" name = "username" placeholder="사용자 이름">
+        </div>
+        <div>
+            <label for="password">사용자 비밀번호</label>
+            <input id="password" type="password" name = "userpassword" placeholder="사용자 비밀번호">
+        </div>
+        <div>
+            <label for="check">개인정보 사용에 동의하시겠습니까?</label>
+            <!-- checked 문구는 이미 체크표시 해두는것 -->
+            <input type="checkbox" id="check" checked name = "check2">
+        </div>
+        <!-- label안에 input을 넣은 경우 -->
+        <label>
+            새로운 입력
+            <input type="submet">
+        </label>
+        
+        <select name="" id="">
+            <option value="">사과</option>
+            <option value="">오렌지</option>
+            <option value="">수박</option>
+            <option value="">딸기</option>
+        </select>
+        <!-- type = submit 승인하다 제출 -->
+        <button type="submit">제출</button>
+    </form>
+</body>
+
+</html>

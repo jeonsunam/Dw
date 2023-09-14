@@ -1,0 +1,45 @@
+#header{
+    font-size: 20px;
+}
+/* 부모를 기준으로 크기가 달라지는(움직이는) 
+부모에게 준 값과 자식에게 준 값을 곱하는 em */
+#header > h2 {
+    font-size: 0.75em; /* 16px * 2em = 32px */
+}
+.list {
+    font-size: 60px;
+}
+
+.list li {
+    /* rem 가장 상단의 부모 속성의 크기?를 받는다 */
+    font-size: 0.8rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: gray;
+    border: 0;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 40px;
+    color: black;
+    cursor: pointer;
+    /* transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease; 
+    위의 세줄을 합친것이 아래줄*/
+    transition: all 2000ms ease;
+}
+/* 버튼에서 확인과 취소를 알려주기 위해서 따로 클래스명 지정 */
+.btn-primary {
+    background-color: rgb(9, 58, 253);
+}
+.btn:hover{
+    background-color: aquamarine;
+}
+.btn:active{
+    background-color: aliceblue;
+}
+.btn-primary:active{
+    background-color: brown;
+}

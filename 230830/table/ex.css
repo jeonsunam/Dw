@@ -1,0 +1,35 @@
+table {
+	border : 2px solid black;
+	border-collapse : collapse;
+}
+table thead th {
+	text-align : left;
+	padding : 10px;
+}
+
+table tbody th {
+	text-align : left;
+	padding : 10px;
+	border-right : 2px solid black;
+}
+table tbody td {
+	border-right : 2px solid black;
+	padding : 10px;
+	text-align : right;
+}
+
+table tr {
+	border-bottom : 2px solid black;
+}
+
+table td:nth-child(2) {
+	text-align : right;
+	vertical-align:top;
+}
+table tbody tr:nth-child(2n){
+	background-color : yellow;
+}
+
+#two thead tr th {
+	border-right : 2px solid black;
+}

@@ -1,0 +1,28 @@
+/* btn padding 사용하면 글자가 넘쳐도 자동으로 늘어남 */
+.btn {
+    /* 1rem = 16px */
+    font-size: 1rem;
+    display: inline;
+    /* display: block; */
+    padding: 30px 40px;
+    /* 배경색을 blue로 만들어주세요 
+    글자색은 흰색으로 만들어주세요
+    테두리는 짙은 blue로 만들어주세요*/
+    background-color: rgba(0, 0, 255, 0.842);
+    color: rgba(255, 255, 255, 0.842);
+    border-color: rgba(255, 60, 0, 0.856);
+    /* 버튼 active상태에 넣으면 눌럿을때만 되서 기본상태에서 써야한다 / 사용자에게 커서 모양을 바꿔서 보여준다*/
+    cursor: pointer;
+    /* 애니메이션 효과 / 1000ms = 1s(초) / transition은 before 상태에 배치하는 것이 좋다 */
+    transition: all 200ms ease;
+}
+/* 코드 적은 순서대로 실행 ex) hover 다음 active를 적으면 hover가 먼저 적용 후 active 적용 */
+.btn:hover{
+    background-color: red;
+    border-radius: 20px;
+}
+/* 버튼을 누르고있으면 아래 내용 실행하고 버튼을 떼면 실행 취소 */
+.btn:active{
+    background-color: yellow;
+    color: black;
+}

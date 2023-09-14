@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nanum+Pen+Script&display=swap');
+
+@font-face {
+    font-family: 'ClimateCrisisKR-1979';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Her-Leeoksun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Leeoksun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title{
+    font-family: 'Nanum Pen Script', cursive;
+    font-weight: 600; 
+    /* text-decoration: line-through;
+    text-decoration: underline; */
+    /* 글자간격 조절 */
+    letter-spacing: -0.05px;
+    
+}
+
+.giants{
+    font-family: 'ClimateCrisisKR-1979';
+    font-size: 2rem;
+    line-height: 2; /*==200% */
+    /* 줄바꿈없이 계속 나열하는 방식 */
+    white-space: nowrap;
+
+}
+
+.her{
+    font-family: 'Her-Leeoksun';
+    font-size: 3rem;
+
+}

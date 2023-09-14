@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.background {
+    background-image: url('https://health.chosun.com/site/data/img_dir/2023/06/12/2023061201327_0.jpg');
+    width: 100vw;
+    height: 100vh;
+    /* 반복 */
+    /* background-repeat: repeat-x; */
+    /* 반복하지 않음 */
+    background-repeat: no-repeat;
+    /* border: 1px solid black;  */
+    background-position:center;
+    /* background-size: 100%; */
+    /* 비율 유지한채로 꽉채워준다 */
+    background-size: cover;
+}

@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgb(170, 165, 165);
+    /* align-items: flex-end; */
+}
+
+/* 
+부모한테 줘야하는 속성
+-------------------------------------------------------------
+align-items = 한 줄일때 수직정렬 하는 속성
+align-content = 두 줄 이상일때 수직정렬하는 속성(flex-wrap필요)
+-----------------------------------------------------------
+자식한테 줄 수 있는 속성
+--------------------------------------------------------------
+align-self = 부모에서 주어진 align-items와 align-content의 통제를 벗어나서 스스로 수직정렬 하는 속성
+*/
+
+.flex > div {
+    /* background-color: hsl(180, 50%, 60%); */
+    flex-grow: 1;
+}
+
+.stretch {
+    background-color: hsl(180, 50%, 30%);
+    /* 부모에게 전체 정렬을 시켜도 align-self쓰면 자식이 혼자서 움직일수 있다 */
+    align-self: stretch;
+}
+
+.start {
+    align-self: flex-start;
+    background-color: hsl(180, 50%, 40%);
+}
+
+.center {
+    background-color: hsl(180, 50%, 50%);
+    align-self: center;
+}
+
+.end {
+    background-color: hsl(180, 50%, 60%);
+    align-self: flex-end;
+}
