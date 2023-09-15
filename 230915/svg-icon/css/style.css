@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.svg-icon {
+  width: 48px;
+  height: 48px;
+  fill: #03C75A;
+  fill-opacity: 0.5;
+  stroke: blue;
+  stroke-width: 0.2px;
+}/*# sourceMappingURL=style.css.map */
