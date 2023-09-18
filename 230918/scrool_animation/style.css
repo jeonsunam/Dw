@@ -1,0 +1,92 @@
+/* 쌤 코드 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+section:nth-child(even) {
+    flex-direction: row-reverse;
+    background-color: rgb(174, 196, 218);
+}
+
+figure {
+    height: 100%;
+    flex-basis: 50%;
+}
+
+.content {
+    flex-basis: 50%;
+    font-size: 20px;
+    padding: 3rem;
+}
+
+.content h2 {
+    font-size: 30px;
+    margin-bottom: 1rem;
+}
+/* 내가 짠 코드 */
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+
+.wrap:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+
+.img-wrap {
+    width: 100%;
+    height: 100%;
+    flex-basis: 50%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+    flex-basis: 50%;
+} */
