@@ -49,9 +49,12 @@ function showName(name) {
         // 조건이 안 맞을 경우 실행되는 내용
         return console.log(`매개변수의 타입은 ${name}입니다`);
     }
-    
+
     
     // return 아래에 작성된 내용은 실행되지 않는다.
 }
+
+
+
 showName('dsadasdsa');
 
