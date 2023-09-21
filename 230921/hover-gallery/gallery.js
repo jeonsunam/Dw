@@ -25,6 +25,9 @@ const image = document.getElementById('image')
 const title = document.getElementById('title');
 for (let i = 0; i < buttons.length; i++) {
 
+    buttons[0].classList.add('check');
+    title.textContent = data[0].title;
+
     console.log(i);
 
     buttons[i].addEventListener('click', () => {
@@ -34,7 +37,14 @@ for (let i = 0; i < buttons.length; i++) {
         image.src = data[i].url;
         title.innerText = data[i].title;
         
+        // 모든 버튼에서 check 클래스 제거
+        for(let j = 0; j < buttons.length; j++) {
+            buttons[j].classList.remove('check');
+        }
+        // 클릭한 버튼에 check 클래스 추가
+        buttons[i].classList.add('check');
     }) 
 }
+
 
 
