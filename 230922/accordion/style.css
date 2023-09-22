@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* .list {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.list-item {
+    padding: 1rem;
+    box-shadow: 0 0 0 3px rgb(200, 200, 200);
+    border-radius: 8px;
+    transition: all 1s ease;
+    position: relative;
+}
+
+.list-item.selected {
+    box-shadow: 0 0 0 3px rgb(255, 0, 0);
+}
+
+.list-item .content {
+    display: none;
+    position: absolute;
+    top: -70px;
+    left: 0;
+    opacity: 0;
+    box-shadow: 0 0 0 3px rgb(200, 200, 200);
+    transform: translateY(60px);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 1s linear;
+
+}
+
+.list-item.selected .content {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    opacity: 1;
+    box-shadow: 0 0 0 3px rgb(200, 200, 200);
+    transform: translateY(60px);
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: all 1s linear;
+}
+
+
+
+.list-item .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.list-item .icon {
+    transform: rotate(0deg);
+}
+
+.list-item.selected .icon {
+    transform: rotate(180deg);
+} */
+
+
+.list {
+   list-style: none;
+   display: grid;
+   gap: 1rem;
+   padding: 1rem; 
+}
+
+.list-item {
+    padding: 1rem;
+    box-shadow: 0 0 0 3px rgb(200, 200, 200);
+    border-radius: 8px;
+    transition: all 1s ease;
+}
+
+.list-item.selected {
+    box-shadow: 0 0 0 3px rgb(255, 0, 0);
+
+}
+
+.list-item .content {
+    display: none;
+}
+
+.list-item.selected .content {
+    display: block;
+}
+
+.list-item .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-item .icon {
+    transform: rotate(0deg);
+}
+
+.list-item.selected .icon {
+    transform: rotate(180deg);
+}
