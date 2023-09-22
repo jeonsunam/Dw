@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+.text {
+    font-size: 25px;
+    padding: 1rem;
+    /* filter: blur(2px); */
+}
+
+.text.show {
+    filter: blur(3px);
+}
+
+aside {
+    display: flex;
+    position: fixed;
+    background-color: white;
+    left: -290px;
+    top: 0;
+    width: 290px;
+    height : 100%;
+    transition: all 1s ease;
+}
+
+aside.active {
+    left : 0;
+}
+
+/* 
+aside::before {
+    left: 0;
+}
+
+aside::after {
+    left: 50px;
+} */
+
+button {
+    position: absolute;
+    right: -50px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(236, 234, 234, 0.2);
+    position: fixed;
+    top: 0;
+    left: 290px;
+    opacity: 0;
+    transition: all 1s ease;
+    backdrop-filter: blur(5px);
+}
+
+.overlay.open{
+    opacity: 1;
+}
