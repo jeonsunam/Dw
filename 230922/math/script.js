@@ -28,12 +28,16 @@ let min = 1;
 const random = Math.floor(Math.random() * (max - min + 1) + min);
 // console.log(random);
 for(let i = 0; i < 6; i++) {
+    setTimeout(() => {
     // 중복제거
-    console.log(Math.floor(Math.random() * (max - min + 1) + min));
+    console.log(Math.floor(Math.random()*45));
+}, 500 * i)
 }
 
-const randomGenerator = (min, max) => {
-    return console.log(Math.random() * (max - min + 1) + min);
-}
+// const randomGenerator = (min, max) => {
+//     return console.log(Math.random() * (max - min + 1) + min);
+// }
 
-randomGenerator(1,10);
+// randomGenerator(1,10);
+
+
