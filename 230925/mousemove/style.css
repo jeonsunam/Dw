@@ -35,7 +35,7 @@ body {
 }
 
 .dot {
-    transition: all 200ms linear;
+    transition: all 10000ms linear;
     width: var(--size);
     height: var(--size);
     border-radius: var(--size);
