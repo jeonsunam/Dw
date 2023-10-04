@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function add(a, b) {
+        var sum = a + b;
+        return sum;
+      }
+
+      function sub(a, b) {
+        var res = a - b;
+        return res;
+      }
+
+      //   window.onload = html코드가 다 작성되고 나서 실행
+      window.onload = function () {
+        var sum = add(4, 5);
+        document.write("add=" + sum + "<br/>");
+        var les = sub(10, 4);
+        document.write("sub=" + res);
+      };
+    </script>
+  </body>
+</html>

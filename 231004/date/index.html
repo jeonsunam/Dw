@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var now = new Date();
+      document.write(now);
+
+      // 년도만 출력
+      let year = now.getFullYear();
+      document.write("<br/>" + year);
+
+      // 월만 출력
+      let month = now.getMonth();
+      month = month + 1;
+      // 문자에 숫자 붙   이면 문자열이 된다.
+      month = month >= 10 ? month : "0" + month;
+      document.write("<br/>" + month);
+
+      // 일만 출력
+      let date = now.getDate();
+      date = date >= 10 ? date : "0" + date;
+      document.write("<br/>" + date);
+      document.write("<br/>" + year + "-" + month + "-" + date);
+
+      let isoFormat = now.toISOString().split("T")[0];
+      // split : T를 기준으로 나눈다
+      // isoFormat = isoFormat.split('T');
+      // isoFormat = isoFormat[0];
+      document.write("<br/>" + isoFormat);
+
+      // &amp = &; * = 아스태리스크?
+    </script>
+  </body>
+</html>
