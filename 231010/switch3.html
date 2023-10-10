@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스위치문</title>
+  </head>
+  <body>
+    <script>
+      // 가위 1, 바위 2, 보 3
+      // 이기는 경우 가위(1) - 보(3), 바위(2) - 가위(1), 보(3) - 바위(2)
+      // 지는 경우 가위(1) - 바위(2), 바위(2) - 보(3), 보(3) - 가위(1)
+
+      let userInput1 = prompt(
+        "가위(1), 바위(2), 보(3) 를 입력해주세요.",
+        "ex) 2"
+      );
+      let userInput2 = prompt(
+        "가위(1), 바위(2), 보(3) 를 입력해주세요.",
+        "ex) 2"
+      );
+
+      let str1 = "";
+      let str2 = "";
+
+      if (userInput1 == 1) {
+        str1 = "가위";
+      } else if (userInput1 == 2) {
+        str1 = "바위";
+      } else {
+        str1 = "보";
+      }
+
+      if (userInput2 == 1) {
+        str2 = "가위";
+      } else if (userInput2 == 2) {
+        str2 = "바위";
+      } else {
+        str2 = "보";
+      }
+
+      switch (userInput1 - userInput2) {
+        case -2:
+        case 1:
+          document.write("첫 번째 사람 : " + str1 + "<br/>");
+          document.write("두 번째 사람 : " + str2 + "<br/><br/>");
+          document.write("결과 : 첫번째 사람 승!!!");
+          break;
+
+        case -1:
+        case 2:
+          document.write("첫 번째 사람 : " + str1 + "<br/>");
+          document.write("두 번째 사람 : " + str2 + "<br/><br/>");
+          document.write("결과 : 두번째 사람 승!!!");
+          break;
+
+        case 0:
+          document.write("첫 번째 사람 : " + str1 + "<br/>");
+          document.write("두 번째 사람 : " + str2 + "<br/><br/>");
+          document.write("결과 : 무승부!!!");
+          break;
+
+        default:
+          document.write("잘못 입력하였습니다.");
+          break;
+      }
+      //   const rand1 = prompt("첫 번째 사람의 가위바위보를 입력하세요");
+      //   const rand2 = prompt("두 번째 사람의 가위바위보를 입력하세요");
+
+      //   if (rand1 == "가위" && rand2 == "보") {
+      //     document.write("첫 번째 사람 : " + rand1);
+      //     document.write("두 번째 사람 : " + rand2);
+      //     document.write("결과 : " + rand1 + "승");
+      //   } else if (rand1 == "가위" && rand2 == "바위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : " + rand2 + "승");
+      //   } else if (rand1 == "가위" && rand2 == "가위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : 비김");
+      //   } else if (rand1 == "바위" && rand2 == "가위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : " + rand1 + "승");
+      //   } else if (rand1 == "바위" && rand2 == "보") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : " + rand2 + "승");
+      //   } else if (rand1 == "바위" && rand2 == "바위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : 비김");
+      //   } else if (rand1 == "보" && rand2 == "가위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : " + rand2 + "승");
+      //   } else if (rand1 == "보" && rand2 == "바위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : " + rand1 + "승");
+      //   } else if (rand1 == "가위" && rand2 == "가위") {
+      //     document.write(rand1);
+      //     document.write(rand2);
+      //     document.write("결과 : 비김");
+      //   }
+
+      //   switch (rand1 != rand2) {
+      //     case rand1 == "가위" && rand2 == "보":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand1 + "승");
+      //       break;
+      //     case rand1 == "가위" && rand2 == "바위":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand2 + "승");
+      //       break;
+
+      //     case rand1 == "바위" && rand2 == "가위":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand1 + "승");
+      //       break;
+
+      //     case rand1 == "바위" && rand2 == "보":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand2 + "승");
+      //       break;
+
+      //     case rand1 == "보" && rand2 == "가위":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand2 + "승");
+      //       break;
+
+      //     case rand1 == "보" && rand2 == "바위":
+      //       document.write("첫 번째 사람 : " + rand1);
+      //       document.write("<br/>두 번째 사람 : " + rand2);
+      //       document.write("<br/>결과 : " + rand1 + "승");
+      //       break;
+
+      //       switch (rand1 == rand2) {
+      //         case rand1 == "가위" && rand2 == "가위":
+      //           document.write("첫 번째 사람 : " + rand1);
+      //           document.write("<br/>두 번째 사람 : " + rand2);
+      //           document.write("<br/>결과 : 비겼음");
+      //           break;
+
+      //         case rand1 == "바위" && rand2 == "바위":
+      //           document.write("첫 번째 사람 : " + rand1);
+      //           document.write("<br/>두 번째 사람 : " + rand2);
+      //           document.write("<br/>결과 : 비겼음");
+      //           break;
+
+      //         case rand1 == "보" && rand2 == "보":
+      //           document.write("첫 번째 사람 : " + rand1);
+      //           document.write("<br/>두 번째 사람 : " + rand2);
+      //           document.write("<br/>결과 : 비겼음");
+      //           break;
+      //       }
+      //   }
+    </script>
+  </body>
+</html>
