@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 1부터 200까지의 짝수의 합을 구하는 프로그램을 작성하시오. (continue를 사용)
+    document.write("<h2>1부터 200까지의 짝수의 합(continue 사용)");
+    let sum = 0;
+    for (let i = 0; i <= 200; i++) {
+      if (i % 2 == 1) {
+        continue;
+      }
+      sum += i;
+    }
+    document.write(`<br>sum : ${sum} `);
+    document.write("<hr>");
+
+    // let sum1 = 0;
+    // while (true) {
+    //   // +는 number타입으로 바꾸는 parseInt와 같은 것
+    //   let i = +prompt("누적시킬 값을 입력하세요");
+    //   sum1 += i;
+    //   if (i == 0) {
+    //     break;
+    //   }
+    // }
+    // document.write(`<h4>지금까지 나온값은 : ${sum1}</h4>`);
+
+    // 1~10까지 반복되는 2개의 for문을 이용해서
+    // i와 k를 더한 합이 3의 배수일때만 출력 continue룰 이용
+
+    for (let i = 1; i <= 10; i++) {
+      for (let k = 1; k <= 10; k++) {
+        if ((i + k) % 3 !== 0) {
+          continue;
+        }
+        document.write(`<h4>i : ${i} + k : ${k} + 결과 : ${i + k}</h4>`);
+      }
+    }
+    document.write("<hr>");
+
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 0 && i % 3 == 0) {
+        document.write(`<h4>2의 배수 이면서 3의 배수 : ${i}</h4>`);
+      }
+    }
+    document.write("<hr>");
+
+    // 두 수를 입력(prompt) 두 수의 합이 100 이상일때만 출력
+    // continue를 이용, 두 수 모두 0이 입력되면 종료
+
+    while (true) {
+      let inputNum1 = +prompt("숫자를 입력하세요.(0을 입력하면 종료됩니다.)");
+      let inputNum2 = +prompt("숫자를 입력하세요.(0을 입력하면 종료됩니다.)");
+
+      if (inputNum1 + inputNum2 >= 100) {
+        document.write(
+          `첫 번째 수 : ${inputNum1}, 두 번째 수 : ${inputNum2}, 합 : ${
+            inputNum1 + inputNum2
+          }`
+        );
+      } else if (inputNum1 == 0 && inputNum2 == 0) {
+        break;
+      } else {
+        continue;
+      }
+    }
+  </script>
+</html>
