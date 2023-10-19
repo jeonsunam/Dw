@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function 예제</title>
+    <style>
+      div {
+        border: 1px solid red;
+        width: 300px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="시작" onclick="randProc()" /><br />
+    <hr color="blue" />
+    <!-- 시작 버튼 누르면 랜덤수 5개를 출력 -->
+    <h1>출력위치</h1>
+    <div id="res"></div>
+  </body>
+  <script>
+    function randProc() {
+      const res = document.getElementById("res");
+      res.style.backgroundColor = `rgb(${Math.random() * 256}, ${
+        Math.random() * 256
+      }, ${Math.random() * 256})`;
+    }
+
+    // 랜덤으로 색상을 뽑아주는 버튼 rgb로
+  </script>
+</html>

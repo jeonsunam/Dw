@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="name"></div>
+  </body>
+  <script>
+    // 이름을 prompt로 입력 받는다.
+    const userName = prompt("이름을 입력하세요.");
+    // 색상명을 prompt로 입력 받는다.
+    const color = prompt("색상명을 입력하세요.");
+    const backGround = prompt("배경색을 입력하세요.");
+
+    const func = function (userName, color, backGround) {
+      // 이름을 div태그 안에 넣는다.
+      const divEl = document.querySelector("#name");
+      divEl.innerHTML = userName;
+      // 이름의 색을 입력받은 색상명으로 바꾼다. style.color
+      divEl.style.color = color;
+      divEl.style.backgroundColor = backGround;
+    };
+
+    func(userName, color, backGround);
+  </script>
+</html>
