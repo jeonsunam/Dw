@@ -1,0 +1,72 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*
+#box1 {
+  width: 200px;
+  height: 100px;
+  background-color: #0066cc;
+  color: #ffffff;
+  font-weight: bold;
+  border-color: green;
+  border-width: 3px;
+  border-style: solid;
+  /* border: 두께 종류 색깔 */
+/* text-align: center; */
+/* padding-top을 이용해 글자를 내리는 방법 그러나 박스의 높이가 달라지면 다시 노가다 */
+
+/* 높이가 딱 얼마다 라고 이야기 할 필요가 없는경우 */
+/* 높이가 얼마인지 모름 */
+/* #box1 {
+  width: 200px;
+  background-color: #06c;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 0;
+} */
+
+/* 글이 한줄로 끝나는 것이 확실할 때 */
+/* 정중앙 정렬도 가능, 박스의 높이도 이야기 할 수 있다 */
+/* 두줄 이상이면 간격이 이상하게 벌어져 단점이다. */
+/* #box1 {
+  width: 200px;
+  height: 100px;
+  background-color: #06c;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 100px;
+} */
+
+/* 박스 화면이 정중앙 보내기 */
+/* #box1 {
+  width: 200px;
+  height: 100px;
+  background-color: #06c;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* 글이 여러줄 일수도 있고 박스의 높이도 확실히 이야기 하고 싶고 정확히 글을 상하 중앙정렬 하고 싶을 때 */
+#box1 {
+  width: 200px;
+  height: 100px;
+  background-color: aliceblue;
+  color: blue;
+  position: relative;
+}
+
+#inner_box {
+  display: inline;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
