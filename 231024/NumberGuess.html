@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>숫자맞추기 게임</title>
+  </head>
+  <body>
+    <h1>Number Guess</h1>
+    <p>1부터 100 사이의 숫자를 입력하시오.</p>
+    <input id="number" type="text" />
+    <button type="button" onclick="test()">숫자 추측</button>
+    <p id="message"></p>
+  </body>
+  <script>
+    let randNum = 0;
+    let count = 0;
+    const MAX_COUNT = 5;
+    function getRandom() {
+      randNum = parseInt(Math.random() * 100 + 1);
+    }
+    function reset() {
+      count = 0;
+      getRandom();
+    }
+    function test() {
+      const input = document.querySelector("#number");
+      count++;
+      if (randNum == input.value) {
+        alert(`게임에서 승리하셨습니다. 숫자 : ${randNum}`);
+        reset();
+      } else {
+        count++;
+        if (count == MAX_COUNT) {
+          alert(`게임에서 패배하셨습니다. 숫자 : ${randNum}`);
+          reset();
+        }
+      }
+    }
+  </script>
+</html>
