@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event</title>
+  </head>
+  <style>
+    p {
+      background-color: yellow;
+      height: 200px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <p id="pTag">이벤트 리스너 테스트</p>
+    <input id="inputTag" type="text" />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </body>
+  <script>
+    // ** 이벤트 리스너(event listener) **
+    // 이벤트 리스너란 이벤트가 발생했을때 그 처리를 담당하는 함수를 가리키며, 이벤트 핸들러(event handler)라고도 한다.
+    // 지정된 타입의 이벤트가 특정 요소에서 발생하면, 그 요소에 등록된 이벤트 리스너를 실행시킨다.
+
+    // ** 이벤트 리스너 등록 방법 **
+    // 1. HTML 태그에 속성으로 등록
+    // 2. javascript에서 프로퍼티로 등록
+    // 2-1.addEventListener() 함수 사용 / 대상객체.addEventListener(이벤트명, 실행할이벤트리스너, 이벤트전파방식)
+
+    const pTag = document.getElementById("pTag");
+    // pTag.addEventListener("click", () => {
+    //   alert("클릭이벤트 발생");
+    // });
+    // }, 기본값 false / true면 안적어도 됨 )
+
+    // 더블클릭 dblclick
+    // pTag.addEventListener("dblclick", () => {
+    //   alert("dblclick 이벤트 발생");
+    // });
+
+    // mousedown - 마우스를 누르고 있을 때
+    // pTag.addEventListener("mousedown", () => {
+    //   alert("mousedown 발생");
+    // });
+
+    // mouseup - 눌렀던 마우스 버튼을 뗄 때
+    // pTag.addEventListener("mouseup", () => {
+    //   alert("mouseup 발생");
+    // });
+
+    // mousemove - 마우스를 움직였을 때
+    // pTag.addEventListener("mousemove", () => {
+    //   alert("mousemove 발생");
+    // });
+
+    // mouseover - 해당 요소 바깥에서 안으로 옮겼을 때
+    // pTag.addEventListener("mouseover", () => {
+    //   alert("mouseover 발생");
+    // });
+
+    // mouseout - 마우스를 해당 요소 안에서 바깥으로 옮겼을 때
+    // pTag.addEventListener("mouseout", () => {
+    //   alert("mouseout 발생");
+    // });
+
+    // contextmenu - 마우스 오른쪽 버튼을 눌렀을 때
+    // pTag.addEventListener("contextmenu", (event) => {
+    //   event.preventDefault(); // 기존 이벤트를 막는 역할
+    //   alert("마우스 우클릭이 방지된 사이트입니다.");
+    // });
+
+    // ** UI 이벤트 **
+    // load
+    // window.addEventListener("load", () => {
+    //   alert("load 이벤트 발생");
+    // });
+
+    // resize
+    // window.addEventListener("resize", () => {
+    //   alert("resize 이벤트 발생");
+    // });
+
+    // scroll
+    // window.addEventListener("scroll", () => {
+    //   alert("scroll 이벤트 발생");
+    // });
+
+    // ** 키보드 이벤트 **
+    // 1. keydown - 2. keypress - 3. keyup
+    // keydown - 사용자가 키를 처음 눌렀을 때
+    // 한글도 인식/입력 가능
+
+    const inputTag = document.getElementById("inputTag");
+    // inputTag.addEventListener("keydown", (event) => {
+    //   console.log(`key : ${event.key}, code : ${event.code}`);
+    // });
+
+    // keyup - 사용자가 키를 뗄 때
+
+    inputTag.addEventListener("keyup", (event) => {
+      // if (event.keyCode == 229) {
+      // 한글 공백으로 만드는 / 지우는 문구
+      inputTag.value = inputTag.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, "");
+      //   }
+      //   alert("keydown 이벤트 발생");
+      console.log(`key : ${event.key}, code : ${event.code}`);
+    });
+
+    // keypress - 사용자가 눌렀던 키의 문자가 입력되었을 때
+    // 한글은 인식/입력 불가능
+
+    // inputTag.addEventListener("keypress", (event) => {
+    //   //   alert("keydown 이벤트 발생");
+    //   console.log(`key : ${event.key}, code : ${event.code}`);
+    // });
+
+    // 포커스 이벤트
+    // focus - 요소가 포커스를 얻었을 때
+    // inputTag.addEventListener("focus", () => {
+    //   alert("focus 이벤트 발생");
+    // });
+    inputTag.focus();
+  </script>
+</html>
