@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>domTree</title>
+  </head>
+  <body>
+    <ul>
+      <li><span>List Item1</span></li>
+      <li><span>List Item2</span></li>
+      <li><span>List Item3</span></li>
+      <li><span>List Item4</span></li>
+      <li><span>List Item5</span></li>
+    </ul>
+  </body>
+  <script>
+    var list = document.getElementsByTagName("ul")[0];
+    var allitems = list.getElementsByTagName("li");
+    // const allitems = list.childNodes;
+    // console.log(allitems[0].lastChild);
+    allitems[4].lastChild.style.color = "red";
+    allitems[2].previousSibling.previousSibling.style.color = "yellow";
+    allitems[2].nextSibling.nextSibling.style.color = "blue";
+
+    for (var i = 0, length = allitems.length; i < length; i++) {
+      //   alert(allitems[i].firstChild.data);
+      //   console.log(allitems[i].firstChild.firstChild.data);
+      console.log(allitems[i].firstChild.innerHTML);
+    }
+  </script>
+</html>
