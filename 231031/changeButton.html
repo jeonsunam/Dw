@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    #wrapper {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, gray, white);
+      border: 3px solid gray;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imgWrapper {
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 5px solid black;
+    }
+
+    /* div {
+      
+    } */
+
+    div.on {
+      border: 20px solid black;
+    }
+
+    img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+      filter: contrast(0%);
+    }
+
+    img.on {
+      /* 이미지 색상 바꿀때 사용 (야매이긴함) */
+      filter: opacity(0.5) drop-shadow(0 0 0 red) saturate(400%) blur(3px);
+    }
+
+    /* img {
+    } */
+
+    img:hover {
+      cursor: pointer;
+    }
+    /* * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    #container {
+      border-radius: 50%;
+      background-color: rgb(224, 214, 214);
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 350px;
+      height: 350px;
+      border: 3px solid black;
+      border-radius: 50%;
+    }
+
+    #icon {
+      width: 200px;
+      height: 200px;
+      color: black;
+    } */
+  </style>
+
+  <body>
+    <div id="wrapper">
+      <div id="imgWrapper" class="imgWrapper">
+        <img src="전원.png" class="" />
+      </div>
+    </div>
+
+    <!-- <div id="container">
+      <div id="wrapper">
+        <a href="#" onclick="on()"
+          ><iconify-icon
+            id="icon"
+            icon="mdi:power"
+            width="200"
+            color="black"
+          ></iconify-icon
+        ></a>
+      </div>
+    </div>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script> -->
+  </body>
+
+  <script>
+    const imgTag = document.querySelector("img");
+    const divTag = document.querySelector("#imgWrapper");
+    imgTag.addEventListener("click", () => {
+      // const currentClass = imgTag.classList[0];
+      // if (currentClass == "off") {
+      //   imgTag.classList.remove("off");
+      //   imgTag.classList.add("on");
+      //   divTag.classList.remove("off");
+      //   divTag.classList.add("on");
+      // } else {
+      //   imgTag.classList.remove("on");
+      //   imgTag.classList.add("off");
+      //   divTag.classList.remove("on");
+      //   divTag.classList.add("off");
+      // }
+      // toggle : 클래스가 있으면 삭제해주고 없으면 넣어주는 역할
+      imgTag.classList.toggle("on");
+      divTag.classList.toggle("on");
+    });
+
+    // const icon = document.getElementById("icon");
+    // const wrapper = document.getElementById("wrapper");
+    // function on() {
+    //   icon.style.color = "red";
+    //   icon.style.filter = "blur(2px)";
+    //   wrapper.style.border = "30px solid black";
+    // }
+  </script>
+</html>
