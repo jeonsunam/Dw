@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html and text</title>
+  </head>
+  <body>
+    <p>1<span>홍길동</span></p>
+    <p>2<span>개나리</span></p>
+    <p>3<span>진달래</span></p>
+  </body>
+  <script src="../resources/JS/jquery-3.6.4.js"></script>
+  <script>
+    // this 누른대상
+    // $("p").on("click", function () {
+    // html() 태그와 텍스트 둘다 보여줌
+    //    console.log($(this).html());
+    //   text() 텍스트만 보여줌
+    //   console.log($(this).text());
+    // });
+
+    const ps = document.querySelectorAll("p");
+    // ps.forEach((value, index, array) => {
+
+    // })
+
+    const pTags = $("p");
+    console.log(pTags.length);
+    // jquery : each / javascript : forEach
+    pTags.each((index, item) => {
+      console.log($(item).html());
+    });
+
+    // jquery each 함수 첫 번째
+    // jquery 는 콜백함수 index가 먼저 온다 / javascript 는 콜백함수 value가 먼저
+    // $.each(반복할 대상, function() {
+
+    // })
+    $.each(pTags, function (index, item) {});
+
+    // 두 번째 selector : 선택자
+    $("p").each(function (index, item) {});
+  </script>
+</html>

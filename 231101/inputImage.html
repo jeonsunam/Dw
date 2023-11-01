@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>input Image</title>
+  </head>
+  <body>
+    <button>이미지 추가</button>
+  </body>
+  <script src="../resources/JS/jquery-3.6.4.js"></script>
+  <script>
+    $("button").on("click", function () {
+      const imgArr = [
+        "고양이.webp",
+        "고양이1.webp",
+        "고양이2.webp",
+        "고양이3.webp",
+        "고양이4.webp",
+      ];
+      const randNum = parseInt(Math.random() * 5);
+      const img = $(
+        `<img src = "../resources/image/${imgArr[randNum]}" width = "200px" height = "200px" style = "border:2px solid red" />`
+      );
+      img.appendTo("body");
+    });
+  </script>
+</html>
