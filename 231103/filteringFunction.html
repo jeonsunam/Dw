@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>child Selector</title>
+</head>
+
+</style>
+</html>
+<body>
+    <form>
+        <label for="user">
+            <span>이름</span>
+        </label>
+        <input type="text" id="user" value="korea" readonly><br>
+        <label>성별</label> 
+        <input type="radio" id="gend" name="gend" value="남자" checked >남자
+        <input type="radio" id="gend" name="gend" value="여자">여자<br>
+        <label for="intro">소개</label> 
+        <textarea id="intro" cols="40" rows="4"></textarea> <br>
+        <label for="work">직업</label>
+        <select id="work">
+            <option value="programmer">프로그래머</option>
+            <option value="progammer">프로게이머</option>
+            <option value="whitehand">백수</option>
+        </select><br>
+        <input type="button" id="btnView" value="조사하기">
+        <input type="button" id="btnChange" value="이름변경">
+    </form>
+
+</body>
+<script src="../resources/js/jquery-3.6.4.js"></script>
+<script>
+    console.log($("label[for=user]").text());
+    
+    // 이름 변경 버튼 클릭 이벤트
+    $("#btnChange").on("click", function() {
+        const nameInput = $("#user");
+        nameInput.val(prompt("입력하세요"));
+        // console.log(nameInput.val("America"));
+    })
+
+    // console.log($("input:checked"));
+
+
+    $("#btnView").on("click", function() {
+        const textarea = $("#intro").val();
+        const nameinput = $("#user").val();
+        const gender = $("input:checked").val();
+        const select = $("option:selected").val();
+        alert(`${nameinput}\n${gender}\n${textarea}\n${select}`);
+    })
+    
+</script>
+</html>

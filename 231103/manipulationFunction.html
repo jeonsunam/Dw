@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manipulation Function</title>
+</head>
+<style>
+    p {
+        cursor: pointer;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+</html>
+<body>
+    <p title="Tulips">튜울립</p>
+    <p title="Chrysanthemum">국화</p>
+    <p title="Koala">코알라</p>
+    <p title="Hydrangeas">수국</p>  
+</body>
+<script src="../resources/js/jquery-3.6.4.js"></script>
+<script>
+    const imgArr = ["튤립.jpg", "국화.webp", "코알라.jpg", "수국.jpg"];
+    $("p").on("click", function() {
+        //    alert("p태그 클릭");
+        // console.log($(this).index());
+        const index = $(this).index();
+        $(this).append(`<img src="../resources/img/${imgArr[index]}"/>`);
+        $(`<img src="../resources/img/${imgArr[index]}"/>`).appendTo(this);
+        $(this).prepend(`<img src="../resources/img/${imgArr[index]}"/>`);
+        $(`<img src="../resources/img/${imgArr[index]}"/>`).prependTo(this);
+    })
+</script>
+</html>
