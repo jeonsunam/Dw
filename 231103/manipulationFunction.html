@@ -27,12 +27,23 @@
     const imgArr = ["튤립.jpg", "국화.webp", "코알라.jpg", "수국.jpg"];
     $("p").on("click", function() {
         //    alert("p태그 클릭");
-        // console.log($(this).index());
+        // console.log($(this).index());            
         const index = $(this).index();
-        $(this).append(`<img src="../resources/img/${imgArr[index]}"/>`);
-        $(`<img src="../resources/img/${imgArr[index]}"/>`).appendTo(this);
-        $(this).prepend(`<img src="../resources/img/${imgArr[index]}"/>`);
-        $(`<img src="../resources/img/${imgArr[index]}"/>`).prependTo(this);
+
+        // 요소 내부에 추가
+        // $(this).append(`<img src="../resources/img/${imgArr[index]}"/>`);
+        // $(`<img src="../resources/img/${imgArr[index]}"/>`).appendTo(this);
+        // $(this).prepend(`<img src="../resources/img/${imgArr[index]}"/>`);
+        // $(`<img src="../resources/img/${imgArr[index]}"/>`).prependTo(this);
+    
+         // 요소 외부에 추가
+        //  $(this).after(`<img src="../resources/img/${imgArr[index]}"/>`);
+         $(`<img src="../resources/img/${imgArr[index]}"/>`).insertAfter(this);
+         $(this).before(`<img src="../resources/img/${imgArr[index]}"/>`);
+         $(`<img src="../resources/img/${imgArr[index]}"/>`).insertBefore(this);
+    
     })
+
+   
 </script>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>find Method</title>
+  </head>
+  <style>
+    .wrapper * {
+      display: block;
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 5px;
+      margin: 15px;
+    }
+    .wrapper {
+      width: 500px;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <ul>
+        ul
+        <li class="start">li class="start"</li>
+        <li class="my">li class="my"</li>
+        <li>li</li>
+        <li class="my">li class="my"</li>
+        <li class="stop">li class="stop"</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+    </div>
+  </body>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <script>
+    // next() : 선택한 요소의 다음 형제 요소
+    // $("li.start").next().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // nextAll() : 선택한 요소의 다음 전체 요소
+    // $("li.start").nextAll().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // nextUntil("어디까지 위치지정", "위치 지정한 곳의 선택한 것 선택")
+    // $("li.start").nextUntil("li.stop", ".my").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // prev() : 선택한 요소의 이전 형제 요소
+    // $("li.stop").prev().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // prevAll() : 선택한 요소의 이전 전체 요소
+    // $("li.stop").prevAll().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // prevUntil("어디까지 위치지정", "위치 지정한 곳의 선택한 것 선택")
+    $("li.stop").prevUntil("li.start", ".my").css({
+      color: "red",
+      border: "2px solid red",
+    });
+
+    // siblings() : 본인을 제외한 나머지 형제들 선택 / 본인은 제외
+    // $("li.start").siblings().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // siblings("선택한 값만 선택")
+    // $("li.start").siblings("li.my").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // add("선택한 값까지 포함해서 선택")
+    $("li.start").add("li.stop").css({
+      color: "red",
+      border: "2px solid red",
+    });
+  </script>
+</html>
