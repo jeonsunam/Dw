@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animate</title>
+  </head>
+  <style>
+    #panel,
+    #flip {
+      padding: 5px;
+      font-size: 32px;
+      text-align: center;
+      background-color: #555;
+      color: white;
+      border: 2px solid #666;
+      border-radius: 3px;
+    }
+
+    #panel {
+      display: none;
+      padding: 50px;
+    }
+  </style>
+  <body>
+    <button id="stop">Stop sliding</button>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div id="flip">여기를 클릭하세요!!</div>
+    <div id="panel">Hello, jQuery!!</div>
+  </body>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <script>
+    $("#flip").on("click", function () {
+      // $("#panel").slideDown(2000); // 밀리세컨즈
+      // $("#panel").slideUp(2000); // 밀리세컨즈
+      $("#panel").slideToggle(2000); // "slow" "fast" 도 들어간다
+    });
+
+    $("#stop").on("click", function () {
+      $("#panel").stop();
+    });
+  </script>
+</html>
