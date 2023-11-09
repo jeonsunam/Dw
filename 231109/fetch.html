@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch</title>
+  </head>
+  <body></body>
+  <script>
+    console.log("Start!!");
+    // 데이터 요청 - 그 전에하는 것은 아래 주석으로 작성됨
+    fetch("https://jsonplaceholder.typicode.com/users")
+      // 바로 실행이 아니라 콜백 등록만 해놓은것(fetch에서 요청 후 값을 받을 때까지 등록만 하고 대기)
+      .then((response) => response.text())
+      //   JSON.parse : 받은 문자열을 배열로 바꿔서 받는다
+      .then((result) => console.log(JSON.parse(result)[0]));
+    //   위의 result는 JSON 형태의 string로 받아진다.
+    // 객체의 형태로 사용하려면 JSON 객체의 parse()를 사용하여 객체로 변환해야한다.
+    console.log("End!!");
+
+    // redirection : 페이지로딩?
+    // status : 페이지 정보 / 200 : 성공
+    // fetch 함수가 리턴하는 객체 ==> promise
+    // then은 리턴받는 promise의 함수
+    // then 함수도 promise 객체를 반환한다.
+
+    // 코드 실행순서
+    // 1. Start 콘솔이 먼저 찍힌다.
+    // fetch 를 만나서 리턴하는 promise의 then함수로 콜백을 등록
+    // 뒤에 있는 두번째 then 함수도 콜백을 등록(등록만 할 뿐 실행은 하지 않음)
+    // 서버(요청한 쪽)에 response가 도착하면 then 함수로 등록했던 콜백들이 실행
+
+    // try catch문
+    // try : 실행할 코드
+    // catch(error) : try에서 오류나면 실행
+    // finally : 써도 되고 안써도 됨 쓴다고 하면 try에서 성공하거나 오류가 떠도 무조건 실행
+  </script>
+</html>

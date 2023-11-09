@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>destructuring</title>
+  </head>
+  <body></body>
+  <script>
+    const gift = ["하니", "해린", "민지", "다니엘", "진용"];
+
+    // ES5
+    // const airMax = gift[0];
+    // const airpod = gift[1];
+    // const appleCoupon = gift[2];
+    // const etcCoupon1 = gift[3];
+    // const etcCoupon2 = gift[4];
+
+    // const etc = [];
+    // etc.push(gift[3]);
+    // etc.push(gift[4]);
+
+    // ES6
+    // 기본값 줄수 있음
+    // const [airMax, airpod, appleCoupon, etcCoupon1, etcCoupon2 = "진용"] = gift;
+    // ... : 전개구문  / 나머지 요소들을 배열로 넣는다? / 전개구문은 항상 젤 마지막에 적어야한다
+    const [airMax, airpod, appleCoupon, ...etcCoupon1] = gift;
+
+    // console.log(airMax, airpod, appleCoupon, etcCoupon1, etcCoupon2);
+    console.log(airMax, airpod, appleCoupon, etcCoupon1);
+
+    const obj = {
+      name: "홍길동",
+      age: "20",
+      address: "대전광역시 중구 선화동",
+      weight: "70kg",
+      height: "190cm",
+    };
+
+    // ES5
+    // const name = obj.name;
+    // const age = obj.age;
+    // const address = obj.address;
+
+    // ES6
+    // 변수명들이 객체의 키값과 동일해야한다
+    // : 새로 지어줄 변수명
+    // = "기본값 지정"
+    const { name, age, address: addr, tel = "010-1234-5678", ...etc } = obj;
+    console.log(name, age, addr, tel, etc);
+  </script>
+</html>
