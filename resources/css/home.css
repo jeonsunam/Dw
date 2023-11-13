@@ -7,7 +7,7 @@
 
 .header-container {
   /* position: fixed;
-    top: 0; */
+  top: 0; */
 }
 
 .add-item {
@@ -34,6 +34,7 @@
 }
 
 .header {
+  /* 문서 흐름을 따라가다 지정된 위치에 도달 / 부모요소의 영역을 기준으로 작동한다*/
   position: sticky;
   top: 80px;
   padding: 80px 40px;
@@ -47,6 +48,7 @@
   background-color: #ffffff;
   cursor: pointer;
   display: inline-flex;
+  align-items: center;
   padding: 8px 24px;
   gap: 24px;
   border-radius: 8px;
@@ -122,9 +124,24 @@
   width: 105px;
 }
 
+.remove-icon {
+  width: 12px;
+  height: 12px;
+}
+
 @media screen and (max-width: 944px) {
   .container {
+    width: 100%;
     flex-direction: column;
+    margin: 0;
+    padding: 24px 16px;
+    gap: 24px;
+  }
+
+  .header-container {
+    position: sticky;
+    top: 24px;
+    z-index: 1;
   }
 
   .header {
@@ -135,10 +152,38 @@
 
   .header > h1 {
     font-size: 24px;
+    margin-bottom: 16px;
   }
 
   .filter {
     padding: 4px 8px;
     gap: 8px;
+  }
+
+  .add-item {
+    padding: 20px 24px;
+  }
+
+  .item {
+    padding: 18px 16px;
+  }
+
+  .item-id {
+    margin-right: 16px;
+    width: 37px;
+  }
+
+  .item-mbti {
+    margin-right: 16px;
+    width: 54px;
+  }
+
+  .item-color-code {
+    width: 72px;
+  }
+
+  .item-color-chip {
+    /* margin-left: 16px; */
+    margin-right: 8px;
   }
 }
