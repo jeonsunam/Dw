@@ -1,6 +1,6 @@
 html {
   font-family: Pretendard;
-  /* 단어 개행 단어를 유지하면서 개행시킨다 : keep-all / normal : 기본값 / break-all : 영어만 가능 */
+  /* 단어 개행 : 단어를 유지하면서 개행시킨다 : keep-all / normal : 기본값 / break-all : 영어만 가능 */
   word-break: keep-all;
 }
 
