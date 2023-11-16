@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Pretendard;
+  word-break: keep-all;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  /* background-image: url(../../../resources/img/고양이3.jpg); */
+  /* 대상과 겹쳐지는 화면 및 뒷배경 효과 */
+  backdrop-filter: blur(12px);
+  /* background-size: cover; */
+}
+
+.progress-bar {
+  height: 6px;
+  background: #4d4d54;
+}
+
+.progress {
+  background-color: #7000ff;
+  width: 70%;
+  height: 100%;
+}
+
+.player-main {
+  background-color: rgba(48, 48, 55, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.current {
+  border-radius: 14px;
+}
+
+.title {
+  color: #d9d9d9;
+}
+
+.artist {
+  color: #8c8993;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  color: #8c8993;
+  text-align: right;
+}
+
+.info,
+.time {
+  flex-basis: 300px;
+}
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Pretendard;
+  word-break: keep-all;
+  font-size: 16px;
+}
+
+body {
+  background-color: #000;
+  color: #d9d9d9;
+  margin: 0;
+}
+
+.container {
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background-color: gray;
+  position: relative;
+}
+
+.progress .progressbar {
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  background-color: purple;
+}
+
+.wrap {
+  width: 100%;
+  background-color: rgb(94, 94, 93);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 16px 24px;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+h2 {
+  color: white;
+}
+
+.left p {
+  color: gray;
+} */
