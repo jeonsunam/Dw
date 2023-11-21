@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>firebase-practice</title>
+  </head>
+  <style>
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+  <body>
+    <p>
+      <label>이름 : </label>
+      <input type="text" name="name" />
+    </p>
+    <p>
+      <label>나이 : </label>
+      <input type="text" name="age" />
+    </p>
+    <p>
+      <label>아이디 : </label>
+      <input type="text" name="id" />
+    </p>
+    <p>
+      <label>전화번호 : </label>
+      <input type="text" name="tel" />
+    </p>
+    <p>
+      <label>성별 : </label>
+      <input type="text" name="gender" />
+    </p>
+    <p>
+      <button id="saveBtn">데이터 저장</button>
+    </p>
+
+    <table border="1">
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+        <th>아이디</th>
+        <th>전화번호</th>
+      </tr>
+    </table>
+
+    <br />
+
+    <button id="deleteBtn">데이터삭제</button>
+  </body>
+  <!-- type="module" 지연실행 / 외부것 사용가능-->
+  <script type="module">
+    import * as firebase from "../resources/js/firebase.js";
+    const { db, getDocs, collection, setDoc, addDoc, getDatas, doc, addDatas } =
+      firebase;
+
+    async function getMembers() {
+      const snapshot = await getDatas("member");
+      const memberTable = document.querySelector("table");
+      snapshot.forEach((doc) => {
+        const { memberName, memberAge, memberId, memberTel, memberGender } =
+          doc.data();
+
+        memberTable.insertAdjacentHTML(
+          "beforeend",
+          `
+          <tr>
+                <td>${memberName}</td>
+                <td>${memberAge}</td>
+                <td>${memberGender}</td>
+                <td>${memberId}</td>
+                <td>${memberTel}</td>
+                <input type="hidden" value="${doc.id}" />
+            </tr>
+            `
+        );
+      });
+    }
+
+    // then : getMembers가 끝나면 function 실행
+    getMembers().then(function () {
+      const trs = document.querySelectorAll("tr");
+      trs.forEach((el) => {
+        el.addEventListener("click", function () {
+          el.classList.toggle("selected");
+        });
+      });
+    });
+
+    const deleteBtn = document.querySelector("#deleteBtn");
+    deleteBtn.addEventListener("click", function () {
+      const selectedTrs = memberTable.querySelectorAll("class=selected");
+    });
+
+    const btn = document.querySelector("#saveBtn");
+    btn.addEventListener("click", function () {
+      const memberInfo = {
+        memberName: document.querySelector("input[name = name]").value,
+        memberAge: document.querySelector("input[name = age]").value,
+        memberId: document.querySelector("input[name = id]").value,
+        memberTel: document.querySelector("input[name = tel]").value,
+        memberGender: document.querySelector("input[name = gender]").value,
+      };
+
+      addDatas("member", memberInfo);
+      alert("데이터 추가!");
+    });
+  </script>
+</html>
