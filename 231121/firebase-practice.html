@@ -9,6 +9,11 @@
     .selected {
       background-color: yellow;
     }
+
+    tr {
+      cursor: pointer;
+      height: 50px;
+    }
   </style>
   <body>
     <p>
@@ -48,16 +53,28 @@
     <br />
 
     <button id="deleteBtn">데이터삭제</button>
+    <button id="updateBtn">회원정보수정</button>
   </body>
-  <!-- type="module" 지연실행 / 외부것 사용가능-->
+  <!-- type="module" 지연실행 / 외부모듈을 사용하기 위해서 module사용해야함-->
   <script type="module">
     import * as firebase from "../resources/js/firebase.js";
-    const { db, getDocs, collection, setDoc, addDoc, getDatas, doc, addDatas } =
-      firebase;
+    const {
+      db,
+      getDocs,
+      collection,
+      setDoc,
+      addDoc,
+      getDatas,
+      doc,
+      addDatas,
+      deleteDatas,
+      updateDatas,
+      deleteField,
+    } = firebase;
 
+    const memberTable = document.querySelector("table");
     async function getMembers() {
       const snapshot = await getDatas("member");
-      const memberTable = document.querySelector("table");
       snapshot.forEach((doc) => {
         const { memberName, memberAge, memberId, memberTel, memberGender } =
           doc.data();
@@ -82,17 +99,47 @@
     getMembers().then(function () {
       const trs = document.querySelectorAll("tr");
       trs.forEach((el) => {
-        el.addEventListener("click", function () {
-          el.classList.toggle("selected");
+        el.addEventListener("click", function (e) {
+          if (e.target.tagName != "TH") {
+            el.classList.toggle("selected");
+          }
         });
       });
     });
 
+    // 데이터 삭제
     const deleteBtn = document.querySelector("#deleteBtn");
     deleteBtn.addEventListener("click", function () {
-      const selectedTrs = memberTable.querySelectorAll("class=selected");
+      const selectedTrs = memberTable.querySelectorAll("[class=selected]");
+      if (selectedTrs.length == 0) {
+        alert("삭제할 데이터가 없습니다.");
+        return;
+      }
+      selectedTrs.forEach((el) => {
+        const docId = el.lastElementChild.value;
+        deleteDatas("member", docId).then(function () {
+          // 새로고침
+          window.location.reload();
+        });
+      });
     });
 
+    const updateBtn = document.querySelector("#updateBtn");
+    updateBtn.addEventListener("click", function () {
+      const updateObj = {
+        memberId: "sunam0123",
+        memberTel: "010-9876-5431",
+        // 문서에서 잘못입력한 것을 지워주는 함수
+        // memberTell: deleteField();
+      };
+
+      updateDatas("member", "member1", updateObj).then(() =>
+        window.location.reload()
+      );
+      // console.log(memberRef);
+    });
+
+    // 데이터 추가
     const btn = document.querySelector("#saveBtn");
     btn.addEventListener("click", function () {
       const memberInfo = {
@@ -103,8 +150,7 @@
         memberGender: document.querySelector("input[name = gender]").value,
       };
 
-      addDatas("member", memberInfo);
-      alert("데이터 추가!");
+      addDatas("member", memberInfo).then(() => window.location.reload());
     });
   </script>
 </html>
