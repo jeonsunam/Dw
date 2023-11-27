@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #ffd195, #ffb283);
+}
+
+header {
+  font-size: 22px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.container {
+  background-color: white;
+  padding: 25px 50px 25px;
+  border-radius: 25px;
+}
+
+.stars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* active클래스가 아닌 i태그 */
+.stars i:not(.active) {
+  font-size: 40px;
+  color: #bbb;
+}
+
+.stars i.active {
+  font-size: 40px;
+  color: #ff9c1a;
+}
