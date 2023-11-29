@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" name="login" id="login">
+      <input name="id" type="text" id="id" size="15" maxlength="15" /><br />
+      <input
+        name="pwd"
+        type="password"
+        id="pwd"
+        size="15"
+        maxlength="15"
+      /><br /><br />
+      <input type="submit" name="Submit" value="로그인" />
+      <input type="button" name="Submit2" value="회원가입" />
+    </form>
+  </body>
+  <script type="text/javascript">
+    document.forms[0].id.focus();
+    // document.forms[0].id.select();
+  </script>
+</html>
