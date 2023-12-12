@@ -1,10 +1,10 @@
 import rockImg from "./assets/rock.svg";
-import sissorImg from "./assets/scissor.svg";
+import scissorImg from "./assets/scissor.svg";
 import paperImg from "./assets/paper.svg";
 
 const RSP = {
   rock: rockImg,
-  sissor: sissorImg,
+  scissor: scissorImg,
   paper: paperImg,
 };
 
