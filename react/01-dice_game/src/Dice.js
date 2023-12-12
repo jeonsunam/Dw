@@ -23,10 +23,10 @@ const DICE_IMAGES = {
   ],
 };
 
-// 값이 제대로 안들어오면 초기값으로 들어가고 값이 제대로 들어오면 초기값은 무시하고 들어온 값으로 실행한다.
 function Dice({ color = "blue", num = 1 }) {
   const src = DICE_IMAGES[color][num - 1];
   const alt = `${color} ${num}`;
   return <img src={src} alt={alt} />;
 }
+
 export default Dice;

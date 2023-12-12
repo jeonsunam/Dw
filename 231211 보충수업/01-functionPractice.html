@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-functionPractice</title>
+  </head>
+  <body></body>
+  <script>
+    // let은 선언만 할 수 있다.(초기화도가능) const 는 선언과 초기화 둘다 해야한다.
+    let z = 2;
+
+    function A(a, b) {
+      //   console.log(a + b + B(a, b));
+      z = a - b;
+    }
+
+    // ...확장문법 = 나머지다 보여준다
+    function B(a, b, ...args) {
+      // 들어오는 객체를 다 확인할수있다. 배열처럼 생긴 유사배열(객체)
+      //  들어오는 파라미터를 적어준 매개변수에 순서대로 넣어준다. 나머지는
+      console.log(arguments);
+      return a + b;
+    }
+
+    const B = (a, b, ...args) => {
+      console.log(a + b);
+    };
+
+    const B = (a, b, ...args) => a + b;
+
+    // 애로우 함수를 사용해서 객체를 리턴하기 위해서는 소괄호를 감싸서 보내야 한다.
+    const B = (a, b, ...args) => ({ a: a + b, b: a - b });
+
+    const B = (a) => {
+      return a + 20;
+    };
+
+    const B = (a) => a + 20;
+
+    // A(2, 5);
+    // console.log(A(2, 5) + B(10, 3));
+    // console.log(z);
+    // A(10, 3);
+    // console.log(z);
+
+    function sumArr(arr) {
+      arr.forEach((v) => {
+        return (z += v);
+      });
+    }
+
+    const arr = [1, 2, 3, 4, 5];
+    sumArr(arr);
+    console.log(z);
+
+    // if (true) {
+    //   let test = 0;
+    //   test = 1;
+
+    //   const test2 = 1;
+
+    //   console.log(z);
+    // }
+
+    B(2, 5, 8);
+  </script>
+</html>

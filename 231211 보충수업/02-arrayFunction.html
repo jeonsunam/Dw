@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-arrayFunction</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. forEach
+    const arr = [10, 20, 30, 40, 50];
+    let sum = 0;
+    arr.forEach((v) => {
+      console.log((sum += v));
+    });
+
+    // 2. map = 새로운 배열을 만들어서 반환해주는 함수
+    // 곱하기 3 = [30, 60, 90, 120, 150]
+    // function two(number) {
+    //   return number * 3;
+    // }
+
+    // const newNumberArr = arr.map(two);
+    // console.log(newNumberArr);
+
+    // const newArr = [];
+    // arr.forEach((v) => {
+    //   newArr.push(v * 3);
+    // });
+
+    const newArr = arr.map((v) => v * 3);
+
+    console.log(newArr);
+
+    const objArr = [
+      { id: 1, name: "홍길동" },
+      { id: 2, name: "진달래" },
+      { id: 3, name: "임꺽정" },
+    ];
+
+    const newObjArr = [];
+
+    const newObj = objArr.map((v) => v.name);
+    console.log(newObj);
+
+    // 3. reduce = 하나의 단일값만 반환해준다.
+    // const arrSum = arr.reduce(function (prevValue, curValue, curIdx, arr) {
+    //   console.log(
+    //     `prev: ${prevValue}, cur: ${curValue}, curIdx: ${curIdx}, arr: ${arr}`
+    //   );
+    //   return prevValue + curValue;
+    // });
+
+    // reduce ((파라미터) => 콜백함수, 초기값)
+    const arrSum = arr.reduce((a, b) => a + b, 1);
+
+    console.log(arrSum);
+  </script>
+</html>

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.js"; // ./는 현재폴더를 의미함.
+import App from "./App.js";
+import "./index.css";
+import State from "./State.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const product = "MacBook";
-// const price = 2000;
-// <App  props /> = props : 내가보내고 싶은 이름(매개변수)을 사용해서 보낸다
+const product = "MacBook";
+const price = 2000;
 root.render(<App />);
+// root.render(<State />);
 // root.render(
 //   <div>
 //     <h1>나만의 {product} 주문하기</h1>
