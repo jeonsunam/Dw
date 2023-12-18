@@ -30,7 +30,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getDatas(collectionName, order, limitNum, lq) {
+async function getDatas(collectionName, options) {
+  // 에러 생성
+  // throw new Error("에러가 아니라 기능입니다.");
+  // // 콘솔창 에러
+  // console.error();
   // const querySnapshot = await getDocs(collection(db, collectionName));
   // const docQuery = query(
   //   collection(db, collectionName),
@@ -40,18 +44,18 @@ async function getDatas(collectionName, order, limitNum, lq) {
 
   let docQuery;
 
-  if (lq === undefined) {
+  if (options.lq === undefined) {
     docQuery = query(
       collection(db, collectionName),
-      orderBy(order, "desc"),
-      limit(limitNum)
+      orderBy(options.order, "desc"),
+      limit(options.limit)
     );
   } else {
     docQuery = query(
       collection(db, collectionName),
-      orderBy(order, "desc"),
-      startAfter(lq),
-      limit(limitNum)
+      orderBy(options.order, "desc"),
+      startAfter(options.lq),
+      limit(options.limit)
     );
   }
   const querySnapshot = await getDocs(docQuery);

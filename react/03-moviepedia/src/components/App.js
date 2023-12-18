@@ -1,7 +1,9 @@
 import { getDatas } from "../firebase";
 import mockItems from "../mock.json";
+import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 import { useEffect, useState } from "react";
+import "./ReviewForm.css";
 
 // 상수 선언 = 전역변수에 대문자로 선언
 const LIMIT = 5;
@@ -10,7 +12,9 @@ function App() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("createdAt");
   const [lq, setLq] = useState({});
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingError, setLoadingError] = useState(null);
+  const [hasNext, setHasNext] = useState(false);
   // sort 함수에 아무런 arguments도 전달하지 않을 때는 기본적으로 유니코드에 정의된 문자열 순서에 따라 정렬된다.
   // ==> compareFunction가 생략될 경우, 배열의 모든 요소들은 문자열 취급되며, 유니코드 값 순서대로 정렬된다는 의미이다.
   // 그렇기 때문에 숫자를 정렬할 때 우리가 상식적으로 이해하는 오름차순이나 내림차순 정렬이 되지 않는다.
@@ -29,12 +33,27 @@ function App() {
     setItems(nextItems);
   };
 
-  const handleLoad = async (lq) => {
-    // 구조분해 할당 이름이 같아야한다.
-    // reviews = 배열, lastQuery = 배열의 마지막 인덱스
-    const { reviews, lastQuery } = await getDatas("movie", order, LIMIT, lq);
-
-    if (lq === undefined) {
+  const handleLoad = async (options) => {
+    let result;
+    console.log(lq);
+    try {
+      // 실행할 코드 에러나면 아래쪽 catch로 감
+      setIsLoading(true);
+      // 구조분해 할당 이름이 같아야한다.
+      // reviews = 배열, lastQuery = 배열의 마지막 인덱스
+      result = await getDatas("movie", options);
+      setLoadingError(null);
+    } catch (error) {
+      // try에서 오류났을때 처리
+      console.error(error);
+      setLoadingError(error);
+      return;
+    } finally {
+      // 오류가 있든 무조건 실행
+      setIsLoading(false);
+    }
+    const { reviews, lastQuery } = result;
+    if (options.lq === undefined) {
       setItems(reviews);
     } else {
       setItems((prevItems) => [...prevItems, ...reviews]);
@@ -46,10 +65,11 @@ function App() {
     // console.log({ reviews });
     // const { reviews } = result;
     setLq(lastQuery);
+    setHasNext(lastQuery);
   };
 
   const handleLoadMore = () => {
-    handleLoad(lq);
+    handleLoad({ order, lq, limit: LIMIT });
   };
 
   // 렌더링을 여러번하는 것을 막아주는 함수? 한번만 하게 해주는 함수
@@ -58,17 +78,35 @@ function App() {
   // 리액트는 [] 안에 있는 값들을 앞에서 기억한 값이랑 비교한다.
   // 비교해서 다른경우에만 콜백함수를 실행한다.(그 전에는 콜백함수를 등록만 해놓는다.)
   useEffect(() => {
-    handleLoad();
+    handleLoad({ order, lq: undefined, limit: LIMIT });
   }, [order]);
 
   return (
     <div>
+      {hasNext && (
+        <button disabled={isLoading} onClick={handleLoadMore}>
+          더 보기
+        </button>
+      )}
       <div>
         <button onClick={handleNewestClick}>최신순</button>
         <button onClick={handleBestClick}>베스트순</button>
       </div>
+      <ReviewForm />
       <ReviewList items={items} onDelete={handleDelete} />
-      <button onClick={handleLoadMore}>더 보기</button>
+      {
+        // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
+
+        // optional chaning = loadingError?.message
+        // loadingError가 null이 아니면(값이 있으면) message를 참조한다.
+        // AND : 앞에 나오는 값이 true 이면 렌더링한다. &&
+        // OR : 앞에 나오는 값이 false 이면 렌더링한다. ||
+        // true = truthy  false = falsy(null, NaN, 0, 빈 문자열, undefined )
+
+        // 아래 두개 같음
+        // loadingError?.message && <span>{loadingError.message}</span>;
+        loadingError !== null ? <span>{loadingError.message}</span> : ""
+      }
     </div>
   );
 }
