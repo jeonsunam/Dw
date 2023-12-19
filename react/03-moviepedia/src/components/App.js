@@ -4,7 +4,6 @@ import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 import { useEffect, useState } from "react";
 import "./ReviewForm.css";
-
 // 상수 선언 = 전역변수에 대문자로 선언
 const LIMIT = 5;
 
