@@ -1,4 +1,4 @@
-import { getDatas } from "../firebase";
+import { getDatas, addDatas, deleteDatas } from "../firebase";
 import mockItems from "../mock.json";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
@@ -26,15 +26,17 @@ function App() {
   const handleNewestClick = () => setOrder("createdAt");
   const handleBestClick = () => setOrder("rating");
 
-  const handleDelete = (id) => {
+  const handleDelete = async (docId) => {
     // items 에서 id 파라미터와 같은 id를 가지는 요소(객체)를 제거
-    const nextItems = items.filter((item) => item.id !== id);
-    setItems(nextItems);
+    // const nextItems = items.filter((item) => item.id !== id);
+    // setItems(nextItems);
+
+    // db에서 데이터 삭제
+    const result = await deleteDatas("movie", docId);
   };
 
   const handleLoad = async (options) => {
     let result;
-    console.log(lq);
     try {
       // 실행할 코드 에러나면 아래쪽 catch로 감
       setIsLoading(true);
@@ -71,6 +73,10 @@ function App() {
     handleLoad({ order, lq, limit: LIMIT });
   };
 
+  const handleAddSuccess = (review) => {
+    setItems((prevItems) => [review, ...prevItems]);
+  };
+
   // 렌더링을 여러번하는 것을 막아주는 함수? 한번만 하게 해주는 함수
   // useEffect는 arguments로 콜백함수와 배열을 넘겨준다.
   // 배열[]은 dependency list 라고 하는데 위에서 handleLoad 함수가 무한루프 작동을 하기 때문에 처리를 해줘야 하는데
@@ -91,7 +97,7 @@ function App() {
         <button onClick={handleNewestClick}>최신순</button>
         <button onClick={handleBestClick}>베스트순</button>
       </div>
-      <ReviewForm />
+      <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
       <ReviewList items={items} onDelete={handleDelete} />
       {
         // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
