@@ -1,28 +1,26 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-// import 추가
 import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   setDoc,
   addDoc,
   doc,
   deleteDoc,
   updateDoc,
-  getDoc,
   query,
   orderBy,
   limit,
   startAfter,
   exists,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-
 import {
   getStorage,
   ref,
   uploadBytes,
   getDownloadURL,
+  deleteObject,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -39,20 +37,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function getDatas(collectionName, options) {
-  // 에러 생성
   // throw new Error("에러가 아니라 기능입니다.");
-  // // 콘솔창 에러
-  // console.error();
-
+  // console.log();
   // const querySnapshot = await getDocs(collection(db, collectionName));
-  // const docQuery = query(
-  //   collection(db, collectionName),
-  //   orderBy("createdAt", "desc"),
-  //   limit(5)
-  // );
-
   let docQuery;
-
   if (options.lq === undefined) {
     docQuery = query(
       collection(db, collectionName),
@@ -86,22 +74,26 @@ async function getDatas(collectionName, options) {
   return { reviews, lastQuery };
 }
 
-async function deleteDatas(collectionName, docId) {
-  await deleteDoc(doc(db, collectionName, docId));
+async function deleteDatas(collectionName, docId, imgUrl) {
+  const storage = getStorage();
+  // 스토리지에 imgUrl 찾음
+
+  try {
+    const deleteRef = ref(storage, imgUrl);
+    await deleteObject(deleteRef);
+    await deleteDoc(doc(db, collectionName, docId));
+  } catch (error) {
+    return false;
+  }
+  return true;
 }
 
 async function addDatas(collectionName, formData) {
-  // randomUUID = 겹치지 않는 유니크 아이디 생성 자바스크립안에 있는 내장객체
   const uuid = crypto.randomUUID();
-  // uuid = 유니크 아이디 128자
-  // 경로이름도 바꿔도 된다.
   const path = `movie/${uuid}`;
-
   const lastId = (await getLastId(collectionName)) + 1;
-
   const time = new Date().getTime();
-
-  // 파일을 저장하고 url을 받아온다.
+  // 파일을 저장하고 url 을 받아온다.
   const url = await uploadImage(path, formData.imgUrl);
 
   formData.id = lastId;
@@ -113,12 +105,52 @@ async function addDatas(collectionName, formData) {
   // addDoc은 문서id를 모름 그래서 리턴을 바로 해준다.
   const result = await addDoc(collection(db, collectionName), formData);
   const docSnap = await getDoc(result);
-  // exist() =
   if (docSnap.exists()) {
     const review = { docId: docSnap.id, ...docSnap.data() };
     return { review };
   }
 }
+
+async function updateDatas(collectionName, formData, docId, imgUrl) {
+  const docRef = await doc(db, collectionName, docId);
+  const time = new Date().getTime();
+
+  const updateFormData = {
+    title: formData.title,
+    content: formData.content,
+    rating: formData.rating,
+    updatedAt: time,
+  };
+
+  // 사진 파일을 변경했을 때
+  if (formData.imgUrl !== null) {
+    // 사진파일 업로드 및 업로드한 파일 경로 가져오기
+    // randomUUID = 겹치지 않는 유니크 아이디 생성 자바스크립안에 있는 내장객체
+    const uuid = crypto.randomUUID();
+    // uuid = 유니크 아이디 128자
+    // 경로이름도 바꿔도 된다.
+    const path = `movie/${uuid}`;
+    const url = await uploadImage(path, formData.imgUrl);
+
+    // 기존사진 삭제하기
+    const storage = getStorage();
+    try {
+      const deleteRef = ref(storage, imgUrl);
+      await deleteObject(deleteRef);
+    } catch (error) {
+      return null;
+    }
+
+    // 가져온 사진 경로 updateInfoObj의 imgUrl 에 셋팅하기
+    updateFormData.imgUrl = url;
+  }
+  // 문서 필드 데이터 수정
+  await updateDoc(docRef, updateFormData);
+  const docData = await getDoc(docRef);
+  const review = { docId: docData.id, ...docData.data() };
+  return { review };
+}
+
 // 이미지 가져오는 함수 --------------------------------------------------------------
 async function uploadImage(path, imgFile) {
   const storage = getStorage();
@@ -130,7 +162,7 @@ async function uploadImage(path, imgFile) {
   // File 객체를 스토리지에 저장
   await uploadBytes(imageRef, imgFile);
 
-  // 저장한 File의 url을 받아온다.
+  // 저장한 File의 url 을 받아온다.
   const url = await getDownloadURL(imageRef);
   return url;
 }
@@ -148,18 +180,17 @@ async function getLastId(collectionName) {
   return lastId;
 }
 
-// 내보내기
 export {
   db,
   getDocs,
   collection,
+  getDatas,
   setDoc,
   addDoc,
-  getDatas,
   doc,
   deleteDoc,
   updateDoc,
   addDatas,
-  exists,
   deleteDatas,
+  updateDatas,
 };
