@@ -29,7 +29,7 @@ const firebaseConfig = {
   projectId: "project0304-dd513",
   storageBucket: "project0304-dd513.appspot.com",
   messagingSenderId: "205045376537",
-  appId: "1:205045376537:web:4c1fd391fc614eb5b5ac88",
+  appId: "1:205045376537:web:4c1fd391fc614eb5b5ac88"
 };
 
 // Initialize Firebase
@@ -56,27 +56,22 @@ async function getDatas(collectionName, options) {
     );
   }
   const querySnapshot = await getDocs(docQuery);
-  // query 쿼리사용해야함
-  // orderBy(어떤 필드를 가지고올지, 정렬방법(오름차순, 내림차순)), limit(페이지 제한 갯수), startAfter()
-  // console.log(querySnapshot);
-  const result = querySnapshot.docs; //   배열
-  // console.log(result);
+  // 쿼리 query
+  // orderBy, limit, startAfter
+  const result = querySnapshot.docs;
   const lastQuery = result[result.length - 1];
-  // console.log(lastQuery);
   const reviews = result.map((doc) => ({ docId: doc.id, ...doc.data() }));
-  // const reviews = result.map((dov) => {
+  // const reviews = result.map((doc) => {
   //   const obj = doc.data();
-  // 접근제한자 .docId 쓰면 docId 생성해서 값을 넣어줌
   //   obj.docId = doc.id;
   //   return obj;
   // });
-  // console.log(reviews);
+
   return { reviews, lastQuery };
 }
 
 async function deleteDatas(collectionName, docId, imgUrl) {
   const storage = getStorage();
-  // 스토리지에 imgUrl 찾음
 
   try {
     const deleteRef = ref(storage, imgUrl);
@@ -101,8 +96,6 @@ async function addDatas(collectionName, formData) {
   formData.updatedAt = time;
   formData.imgUrl = url;
 
-  // formData.imgUrl = 받아온 url;
-  // addDoc은 문서id를 모름 그래서 리턴을 바로 해준다.
   const result = await addDoc(collection(db, collectionName), formData);
   const docSnap = await getDoc(result);
   if (docSnap.exists()) {
@@ -125,10 +118,7 @@ async function updateDatas(collectionName, formData, docId, imgUrl) {
   // 사진 파일을 변경했을 때
   if (formData.imgUrl !== null) {
     // 사진파일 업로드 및 업로드한 파일 경로 가져오기
-    // randomUUID = 겹치지 않는 유니크 아이디 생성 자바스크립안에 있는 내장객체
     const uuid = crypto.randomUUID();
-    // uuid = 유니크 아이디 128자
-    // 경로이름도 바꿔도 된다.
     const path = `movie/${uuid}`;
     const url = await uploadImage(path, formData.imgUrl);
 
@@ -147,18 +137,14 @@ async function updateDatas(collectionName, formData, docId, imgUrl) {
   // 문서 필드 데이터 수정
   await updateDoc(docRef, updateFormData);
   const docData = await getDoc(docRef);
-  const review = { docId: docData.id, ...docData.data() };
+  const review = { docId: docData.id, ...doc.data() };
   return { review };
 }
 
-// 이미지 가져오는 함수 --------------------------------------------------------------
 async function uploadImage(path, imgFile) {
   const storage = getStorage();
-  // ref(storage, path("경로/파일명")/ 이미지 file name)
-  // 경로를 적었는데 storage에 경로가 없으면 자동으로 생성해준다.
   const imageRef = ref(storage, path);
 
-  // await uploadBytes(imageRef, 저장할 file 객체)
   // File 객체를 스토리지에 저장
   await uploadBytes(imageRef, imgFile);
 
@@ -167,14 +153,12 @@ async function uploadImage(path, imgFile) {
   return url;
 }
 
-// 배열 마지막 아이디 가져오는 함수 ------------------------------------------------------------------
 async function getLastId(collectionName) {
   const docQuery = query(
     collection(db, collectionName),
     orderBy("id", "desc"),
     limit(1)
   );
-  // docs = 배열로 나옴
   const lastDoc = await getDocs(docQuery);
   const lastId = lastDoc.docs[0].data().id;
   return lastId;

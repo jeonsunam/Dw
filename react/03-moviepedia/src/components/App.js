@@ -1,14 +1,24 @@
 import { getDatas, addDatas, deleteDatas, updateDatas } from "../firebase";
-import mockItems from "../mock.json";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 import { useEffect, useState } from "react";
-import "./ReviewForm.css";
+// import "./ReviewForm.css";
 import LocaleSelect from "./LocaleSelect";
-import LocaleProvider from "../contexts/LocaleContext";
-import LocaleContext from "../contexts/LocaleContext";
+import {LocaleProvider} from "../contexts/LocaleContext";
+import useTranslate from "../hooks/useTranslate";
+import logoImg from "../assets/logo.png"
+import "./App.css"
+import ticketImg from "../assets/ticket.png"
 
 const LIMIT = 5;
+
+function AppSortButton({selected, children, onClick}) {
+  return(
+    <button disabled={selected} className={`AppSortButton ${selected ? "selected" : ""}`} onClick={onClick}>
+      {children}
+    </button>
+  )
+}
 
 function App() {
   const [items, setItems] = useState([]);
@@ -17,6 +27,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
   const [hasNext, setHasNext] = useState(false);
+  // const [locale, setLocale] = useState("ko");
+  const t = useTranslate();
 
   // sort 함수에 아무런 arguments도 전달하지 않을 때는 기본적으로 유니코드에 정의된 문자열 순서에 따라 정렬된다.
   // ==> compareFunction가 생략될 경우, 배열의 모든 요소들은 문자열 취급되며, 유니코드 값 순서대로 정렬된다는 의미이다.
@@ -37,9 +49,11 @@ function App() {
 
     // db에서 데이터 삭제
     const result = await deleteDatas("movie", docId, imgUrl);
+
+    // db에서 삭제가 성공했을 때만 그 결과를 화면에 반영한다.
     if (!result) {
-      alert("저장된 이미지 파일이 없습니다.\n 경로를 확인해주세요");
-      return; // db에서 삭제가 성공했을 때만 그 결과를 화면에 반영한다.
+      alert("저장된 이미지 파일이 없습니다. \n경로를 확인해주세요.");
+      return;
     }
 
     // Items 셋팅
@@ -99,14 +113,27 @@ function App() {
   }, [order]);
 
   return (
-    <LocaleProvider defaultValue="ko">
-      <div>
-        <LocaleSelect />
-        <div>
-          <button onClick={handleNewestClick}>최신순</button>
-          <button onClick={handleBestClick}>베스트순</button>
-        </div>
+    
+      <div className="App">
+        <nav className="App-nav">
+          <div className="App-nav-container">
+            <img className="App-logo" src={logoImg} alt="movie pedia logo"  />
+            <LocaleSelect />
+          </div>
+        </nav>
+        <div className="App-container">
+        <div className="App-ReviewForm" style={{backgroundImage:`url("${ticketImg}")`}}>
         <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
+        </div>
+        <div className="App-sorts">
+          <AppSortButton onClick={handleNewestClick} selected={order === "createdAt"}>
+            {t('newest')}
+            </AppSortButton>
+          <AppSortButton onClick={handleBestClick} selected={order === "rating"}>
+            {t('best')}
+            </AppSortButton>
+        </div>
+        <div className="App-ReviewList"> 
         <ReviewList
           items={items}
           onDelete={handleDelete}
@@ -114,8 +141,8 @@ function App() {
           onUpdateSuccess={handleUpdateSuccess}
         />
         {hasNext && (
-          <button disabled={isLoading} onClick={handleLoadMore}>
-            더 보기
+          <button className="App-load-more-button" disabled={isLoading} onClick={handleLoadMore}>
+            {t('load more')}
           </button>
         )}
         {
@@ -128,8 +155,14 @@ function App() {
           loadingError !== null ? <span>{loadingError.message}</span> : ""
           // loadingError?.message && <span>{loadingError.message}</span>
         }
+        </div>
+        </div>
+        <footer className="App-footer">
+          <div className="App-footer-container">
+            {t('terms of service')} | {t('privacy policy')}
+          </div>
+        </footer>
       </div>
-    </LocaleProvider>
   );
 }
 
