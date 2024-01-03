@@ -3,6 +3,7 @@ import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
 import QuestionListPage from "./pages/QuestionListPage";
+import CoursePage from "./pages/CoursePage";
 
 function Main() {
   // 라우터
@@ -13,7 +14,8 @@ function Main() {
           <Route index element={<HomePage />} />
           <Route path="courses">
             <Route index element={<CourseListPage />} />
-            {/* <Route path="" element={<CourseListPage />} /> */}
+            {/* :(콜론)을 사용하면 동적으로 바뀌는애다 */}
+            <Route path=":courseSlug" element={<CoursePage />} />
           </Route>
           <Route path="questions">
             <Route index element={<QuestionListPage />} />
