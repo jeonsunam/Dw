@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import styles from "./App.module.css";
 import Footer from "./Footer";
 import "./App.font.css";
+import { useMember } from "../contexts/MemberContext";
 
 function App() {
   return (

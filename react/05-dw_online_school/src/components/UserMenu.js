@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
 import personIcon from "../assets/person.png";
 import styles from "./UserMenu.module.css";
 import { useState, useEffect } from "react";
+import { useMember } from "../contexts/MemberContext";
 
 function UserMenu() {
+  const member = useMember();
+  console.log(member);
   const [isOpen, setIsOpen] = useState(false);
   const handleButtonClick = (e) => {
     // 버블링 막는 위로가는 함수 막는거
@@ -32,9 +36,13 @@ function UserMenu() {
       {/* 조건부 렌더링 */}
       {isOpen && (
         <ul className={styles.popup}>
-          <li>위시리스트</li>
+          <Link to="/wishlist">
+            <li>위시리스트</li>
+          </Link>
           <li className={styles.disabled}>회원가입</li>
-          <li>로그인</li>
+          <Link to="/login">
+            <li>{member ? "로그아웃" : "로그인"}</li>
+          </Link>
         </ul>
       )}
     </div>

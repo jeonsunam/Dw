@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
 import QuestionListPage from "./pages/QuestionListPage";
 import CoursePage from "./pages/CoursePage";
+import Login from "./components/Login";
 
 function Main() {
   // 라우터
@@ -21,6 +22,7 @@ function Main() {
             <Route index element={<QuestionListPage />} />
             {/* <Route path="" element={<QuestionListPage />} /> */}
           </Route>
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
