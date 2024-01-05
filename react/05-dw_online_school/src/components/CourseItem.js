@@ -35,4 +35,5 @@ function CourseItem({ course }) {
     </Card>
   );
 }
+
 export default CourseItem;

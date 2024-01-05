@@ -22,7 +22,6 @@ function ListPage({
   children,
 }) {
   const icon = ICON[variant] || ICON.catalog;
-
   return (
     <>
       <div className={classNames(styles.bg, styles[variant])}>

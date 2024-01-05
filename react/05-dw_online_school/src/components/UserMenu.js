@@ -5,9 +5,14 @@ import { useState, useEffect } from "react";
 import { useMember } from "../contexts/MemberContext";
 
 function UserMenu() {
-  const member = useMember();
-  console.log(member);
+  // const member = useMember();
+  // console.log(member);
   const [isOpen, setIsOpen] = useState(false);
+
+  // JSON.stringfy으로 문자열로 바꾼 것을 다시 원래값으로 받기위해서
+  const isLogined = JSON.parse(localStorage.getItem("member"));
+  // console.log(isLogined);
+
   const handleButtonClick = (e) => {
     // 버블링 막는 위로가는 함수 막는거
     e.stopPropagation();
@@ -16,9 +21,10 @@ function UserMenu() {
 
   useEffect(() => {
     if (!isOpen) return;
-
     const handleClickOutside = () => setIsOpen(false);
-    // const handleClickOutside = () => alert(123);
+    // const handleClickOutside = () => {
+    //   alert("click event handler");
+    // };
 
     window.addEventListener("click", handleClickOutside);
 
@@ -40,9 +46,15 @@ function UserMenu() {
             <li>위시리스트</li>
           </Link>
           <li className={styles.disabled}>회원가입</li>
-          <Link to="/login">
-            <li>{member ? "로그아웃" : "로그인"}</li>
-          </Link>
+          {!isLogined ? (
+            <Link to="/login">
+              <li>로그인</li>
+            </Link>
+          ) : (
+            <Link to="/logout">
+              <li>로그아웃</li>
+            </Link>
+          )}
         </ul>
       )}
     </div>

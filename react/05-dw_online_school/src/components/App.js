@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import styles from "./App.module.css";
-import Footer from "./Footer";
 import "./App.font.css";
+import Footer from "./Footer";
+import { useState } from "react";
 import { useMember } from "../contexts/MemberContext";
 
 function App() {

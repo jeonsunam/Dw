@@ -2,7 +2,7 @@ import styles from "./Button.module.css";
 import classNames from "classnames";
 
 function Button({ className, variant, isDiv, ...restProps }) {
-  if (isDiv == "div") {
+  if (isDiv === "div") {
     // button 을 한개로만 닫았을 때 값을 하나 받아줘야한다.?
     return (
       <div

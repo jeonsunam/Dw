@@ -17,7 +17,7 @@ function Nav() {
       <Container className={styles.container}>
         <Link to="/">
           <div className={styles.logo}>
-            <span>DW</span> OS
+            <span>DW</span>OS
           </div>
         </Link>
         <ul className={styles.menu}>

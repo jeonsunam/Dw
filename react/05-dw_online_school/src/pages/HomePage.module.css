@@ -7,11 +7,10 @@
   z-index: 0;
   background: linear-gradient(
     135deg,
-    /* 48퍼까지 */ #f9f9f9 48%,
-    /* 48퍼부터 78퍼까지 다른색이면 그라디언트 색이 섞이고 같은색이면 그냥 */
-      #ebebeb 48%,
+    #f9f9f9 48%,
+    #ebebeb 48%,
     #ebebeb 78%,
-    /* 78퍼부터 */ #f9f9f9 78%
+    #f9f9f9 78%
   );
 }
 

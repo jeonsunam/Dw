@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Warn from "../components/Warn";
 import CourseItem from "../components/CourseItem";
 
-let listItem;
+let listItems;
 
 function CourseListPage() {
   const [items, setItems] = useState([]);
@@ -20,13 +20,15 @@ function CourseListPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const searchItems = listItem.filter(({ title }) => title.includes(keyword));
+    const searchItems = listItems.filter(({ title }) =>
+      title.includes(keyword)
+    );
     setItems(searchItems);
   };
 
   const handleLoad = async () => {
     const courseItems = await getDatas("courses");
-    listItem = courseItems;
+    listItems = courseItems;
     setItems(courseItems);
     setIsInit(false);
   };
@@ -39,7 +41,7 @@ function CourseListPage() {
     <ListPage
       variant="catalog"
       title="모든 코스"
-      description="자체 제작된 코스들로 기초를 쌓으세요"
+      description="자체 제작된 코스들로 기초를 쌓으세요."
     >
       <form className={searchBarStyles.form} onSubmit={handleSubmit}>
         <input
@@ -58,7 +60,7 @@ function CourseListPage() {
       {items.length === 0 && !isInit ? (
         <Warn
           className={styles.emptyList}
-          title="조건에 맞는 코스가 없어요"
+          title="조건에 맞는 코스가 없어요."
           description="올바른 검색어가 맞는지 다시 한 번 확인해 주세요."
         />
       ) : (

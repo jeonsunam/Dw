@@ -1,20 +1,13 @@
-import Styled from "styled-components";
+import styled from "styled-components";
 
-// const SIZES = {
-//   large: 24,
-//   medium: 20,
-//   small: 16,
-// };
-
-const LoginButton = Styled.button`
-  background-color: #6750a4;
+const LoginButton = styled.button`
+  background-color: #6500c3;
   border: none;
   color: #fff;
   padding: 16px;
-  width: 100%;
-  /* prop을 받은걸로 스타일 지정 */
-  font-size: 24px;
-  border-radius: 8px;
+  font-size: 18px;
+  border-radius: ${({ $round }) => ($round ? `9999px` : `8px`)};
+  cursor: pointer;
 
   &:hover,
   &:active {

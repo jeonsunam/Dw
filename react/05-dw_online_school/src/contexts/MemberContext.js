@@ -18,6 +18,7 @@ export function useMember() {
   if (!context) {
     throw new Error("반드시 MemberProvider 안에서 사용해야 합니다.");
   }
+
   return context.member;
 }
 
@@ -26,5 +27,6 @@ export function useSetMember() {
   if (!context) {
     throw new Error("반드시 MemberProvider 안에서 사용해야 합니다.");
   }
+
   return context.setMember;
 }

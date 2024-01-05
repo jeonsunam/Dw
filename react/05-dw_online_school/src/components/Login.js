@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Link from "./Link";
-import Input from "./Input";
 import Label from "./Label";
+import Input from "./Input";
 import Button from "./LoginButton";
-import KakaoButton from "./KakaButton";
+import KakaoButton from "./KakaoButton";
 import { useState } from "react";
 import { getMember } from "../api/firebase";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useMember, useSetMember } from "../contexts/MemberContext";
 
 const Logo = styled.h1`
@@ -19,7 +19,7 @@ const Logo = styled.h1`
 `;
 
 const Description = styled.div`
-  margin-bottom: 16px;
+  color: #848187;
   text-align: center;
 `;
 
@@ -38,8 +38,11 @@ const Container = styled.div`
 `;
 
 function Login() {
-  const member = useMember();
-  const setMember = useSetMember();
+  // const member = useMember();
+  // const setMember = useSetMember();
+
+  const { state } = useLocation();
+  // console.log(props);
 
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -59,15 +62,23 @@ function Login() {
     e.preventDefault();
 
     const { memberObj, message } = await getMember(values);
+
     if (message === undefined) {
+      // (키값, 데이터)
+      // 배열이든 객체든 문자열로 바꿔주는 JSON.stringfy
+      localStorage.setItem("member", JSON.stringify(memberObj));
+
+      // localStorage.getItem("key");
+      // localStorage.removeItem("key");
+
       // alert("로그인에 성공했습니다.");
-      setMember(memberObj);
-      // navigate("/");
+      // window.location.href = "/";
+      // setMember(memberObj);
+      navigate(state ? state : "/");
     } else {
       alert(message);
     }
   };
-
   return (
     <Container>
       <Logo>DW 온라인스쿨</Logo>
@@ -78,16 +89,16 @@ function Login() {
         <Label htmlFor="email">이메일</Label>
         <Input
           type="email"
-          id="email"
           name="id"
+          id="email"
           placeholder="styled@DW.kr"
           onChange={handleValueChange}
         />
         <Label htmlFor="password">비밀번호</Label>
         <Input
           type="password"
-          id="password"
           name="password"
+          id="password"
           placeholder="비밀번호"
           onChange={handleValueChange}
         />
